@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Commands/commands.h" // Include the header file for commands
+#include "Commands/ListDirectory.h"     // Include the header file for list directories
 
 int main() {
     // Print the welcome message
@@ -33,9 +34,14 @@ int main() {
         // Show docs if the user types "aq docs"
         if (strcmp(command, "aq docs") == 0) {
             show_docs();
-        } else {
-            // For other commands, just echo back what was typed
-            printf("You typed: %s\n", command);
+        }
+        // List directories if the user types "aq list"
+        else if (strcmp(command, "aq list") == 0) {
+            list_directories();
+        } 
+        // Handle unknown commands
+        else {
+            printf("Aq: No command named '%s'\n", command);
         }
     }
 
